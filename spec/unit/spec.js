@@ -18,5 +18,14 @@ JSpec.describe('StringCalculator', function() {
 		it('should return 19', function() {
 			expect(StringCalculator.add('//delim\n3delim6delim5delim5')).to(be, 19);
 		});
+		it('should throw an exception on negative input', function() {
+			expect(function(){ StringCalculator.add('2,-1,5,-3,-4'); }).to(throw_error, Error, 'negatives not allowed: -1, -3, -4');
+		});
+		it('should ignore numbers greater than 1000', function() {
+			expect(StringCalculator.add('2,3,1000,1005,8,1002')).to(be, 1013);
+		});
+		it('should allow delimiters of any length', function() {
+			expect(StringCalculator.add('//***\n1***2***3')).to(be, 6);
+		});
 	});
 });
