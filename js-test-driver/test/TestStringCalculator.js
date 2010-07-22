@@ -39,6 +39,9 @@ TestCase("TestStringCalculator", {
 
     testThatDelimitersCanBeOfAnyLength: function() {
       assertEquals(6, StringCalculator.add('//***\n1***2***3'));
-    }
+    },
+	testThatMultipleDelimitersAreAllowed: function() {
+		assertEquals(6, StringCalculator.add('//[*][%]\n1*2%3)'));
+	}
 });
 
